@@ -1,0 +1,7 @@
+1. Install :
+    express - server,
+    ejs - template engine,
+    nodemon - auto refresh server thing // npx nodemon <app.js>
+    bodyparse,
+    express-validator
+2. 
