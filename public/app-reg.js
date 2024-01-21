@@ -86,7 +86,7 @@ formbtn.addEventListener('click', async (e) => {
                 console.log('OK')
                 // Return -> main page
         window.location.assign('http://127.0.0.1:5000/');
-        } else if(datafetch.status === 400){
+        } else if(datafetch.status === 409){
             
             let user_err = document.createElement('small');
                     user_err.classList.add('user-err');

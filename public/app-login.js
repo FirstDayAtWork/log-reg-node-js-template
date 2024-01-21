@@ -14,7 +14,7 @@ formbtn.addEventListener('click', async (e) => {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
           },
-        body: jsonData
+          body: jsonData
      });
 
      console.log(jsonData)
@@ -28,13 +28,12 @@ formbtn.addEventListener('click', async (e) => {
         window.location.assign('http://127.0.0.1:5000/');
     } else if(datafetch.status === 400){
         console.log(result)
-    } else if(datafetch.status === 402){
+    } else if(datafetch.status === 401){
         console.log(result)
     }
 
     } catch (error) {
-        console.error(error.name)
-        console.error(error.message)
+        console.log(error, 'aaah')
     }
     
 
