@@ -2,6 +2,10 @@
     express - server,
     ejs - template engine,
     nodemon - auto refresh server thing // npx nodemon <app.js>
-    bodyparse,
-    express-validator
+    express-validator,
+    .env,
+    jsonwebtoken,
+    cookieparser,
+    sqlite3 as db.
+    bcrypt
 2. 

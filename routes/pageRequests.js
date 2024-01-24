@@ -1,5 +1,8 @@
 import express from "express";
-import {getIndexPage, getRegisterPage, getLoginPage, postRegisterPage, postLoginPage} from '../controllers/basicRequests.js'
+import {getIndexPage, getRegisterPage, getLoginPage} from '../controllers/renderPages.js'
+import {postRegisterPage} from '../controllers/registerUser.js'
+import {postLoginPage} from '../controllers/loginUser.js'
+import {getWelcomePage} from '../controllers/welcomeUser.js'
 
 const pageRequests = express.Router();
 
@@ -15,7 +18,8 @@ pageRequests.route('/login')
     .get(getLoginPage)
     .post(postLoginPage)
 
-
+pageRequests.route('/welcome')
+    .get(getWelcomePage)
 
 
 

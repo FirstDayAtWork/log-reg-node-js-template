@@ -1,19 +1,22 @@
 import express from 'express'
-import cookieParser from 'cookie-parser'
 import { check, validationResult} from 'express-validator'
+import cookieParser from 'cookie-parser'
 import path from 'path'
+import 'dotenv/config'
 import { fileURLToPath } from 'url'
 import pageRequests from './routes/pageRequests.js'
+import crypto from 'crypto'
 
 const app = express()
 const pathcher = path
+const creepto = crypto
 const PORT = 5000
 
 // folder paths things
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cookieParser())
+app.use(cookieParser(process.env.ACCESS_TOKEN_SECRET))
 app.use(express.static(pathcher.join(__dirname, "public")))
 
 
@@ -28,7 +31,12 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(pageRequests)
 
+// const generateToken = async (c) => {
+//     const hex = await c.randomBytes(64).toString('hex');
+//     console.log(hex)
+//     return hex
+// }
 
-
+// generateToken(creepto)
 
 app.listen(PORT, () => console.log(`Success on port ${PORT}`))

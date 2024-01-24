@@ -25,10 +25,10 @@ formbtn.addEventListener('click', async (e) => {
 
     if(datafetch.status === 200){
         // Return -> main page
-        window.location.assign('http://127.0.0.1:5000/');
+        window.location.assign('http://127.0.0.1:5000/welcome');
     } else if(datafetch.status === 400){
         console.log(result)
-    } else if(datafetch.status === 401){
+    } else if(datafetch.status === 402){
         console.log(result)
     }
 
