@@ -3,10 +3,9 @@ import cookieParser from 'cookie-parser'
 import 'dotenv/config'
 
 const getWelcomePage = (req, res) => {
-    let decodedName = jwt.decode(req.cookies['access_token'])
+    // let decodedName = jwt.decode(req.cookies['access_token'])
 
-    let msg = `You successfully login as ${decodedName.username}!`
-    console.log(decodedName);
+    let msg = `You successfully login!`
     console.log(msg)
     res.render('welcome', {
         msg,

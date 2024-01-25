@@ -5,6 +5,7 @@ import path from 'path'
 import 'dotenv/config'
 import { fileURLToPath } from 'url'
 import pageRequests from './routes/pageRequests.js'
+import authPages from './routes/authPages.js'
 import crypto from 'crypto'
 
 const app = express()
@@ -30,7 +31,7 @@ app.use(express.json())
 // get data from TE (ejs) to the server
 app.use(express.urlencoded({extended: true}))
 app.use(pageRequests)
-
+app.use(authPages)
 // const generateToken = async (c) => {
 //     const hex = await c.randomBytes(64).toString('hex');
 //     console.log(hex)

@@ -32,8 +32,8 @@ const postLoginPage = async (req, res) => {
     const refreshToken = jwt.sign({"username": username}, 
                                 process.env.REFRESH_TOKEN_SECRET,
                                 {expiresIn: '1d'})
-    // send cookie                            
-    res.cookie('access_token', accessToken, {httpOnly: true})
+    // send cookie w/ access & refresh tokens                           
+    res.setHeader('access_token', accessToken)
     res.cookie('refresh_token', refreshToken, {httpOnly: true})
     res.status(200).json('OK')
     console.log(`Username ${username} is successfully login!`)
