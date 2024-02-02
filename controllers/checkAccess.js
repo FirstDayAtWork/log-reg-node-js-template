@@ -17,7 +17,7 @@ const checkAccessToken = (req, res) => {
     // verify it (check if token is expired)
        jwt.verify(lc_token['access_token'], process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
             if (err) {
-                // if token is expired ?
+                // if token is expired ? generate new pair access + refresh
                 console.log("Expired access token")
                 const decodedJwt = jwt.decode(lc_token['access_token'].username)
                 // generate acc jwt token
