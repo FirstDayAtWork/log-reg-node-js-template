@@ -5,6 +5,8 @@ import { getData } from '../database.js'
 
 // Send login data to server then compare with db data
 const postLoginPage = async (req, res) => {
+    const yourIp = req.socket.remoteAddress;
+    
     const sqlres = await getData();
     let { username, password } = req.body;
     console.log(username, password);

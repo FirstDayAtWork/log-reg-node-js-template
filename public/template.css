@@ -13,6 +13,13 @@ body {
     margin: 0;
 }
 
+
+.e-content{
+    display: block;
+}
+
+
+
 h1, h4{
     text-align: center;
     margin: 15px;
@@ -95,3 +102,15 @@ header{
     font-size: 15px;
     text-decoration: none;
   }
+
+
+  noscript{
+    display: none;
+}
+
+.noscript-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

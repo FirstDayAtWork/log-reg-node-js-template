@@ -14,6 +14,8 @@ const db = new sqlite.Database('./test.db', sqlite.OPEN_READWRITE,
 db.get("PRAGMA foreign_keys = ON", function(err){
     if(err){console.error(err.message)}
 })
+
+
 //query the data
 
     //    sql = ;
@@ -32,24 +34,24 @@ db.get("PRAGMA foreign_keys = ON", function(err){
     console.log(result);
 
 // query from foreign table
-    // export async function getForeignData(){
-    //     sql = `SELECT 
-    //             username, 
-    //             email,
-    //             weapons,
-    //             potions
-    //            FROM 
-    //             users 
-    //            INNER JOIN inventory on inventory.id = users.id`
-    //     return new Promise(function(resolve,reject){
-    //         db.all(sql, function(err,rows){
-    //            if(err){return reject(err);}
-    //            resolve(rows);
-    //          });
+    export async function getForeignData(){
+        sql = `SELECT 
+                username, 
+                email,
+                weapons,
+                potions
+               FROM 
+                users 
+               INNER JOIN inventory on inventory.id = users.id`
+        return new Promise(function(resolve,reject){
+            db.all(sql, function(err,rows){
+               if(err){return reject(err);}
+               resolve(rows);
+             });
              
-    //     });
+        });
         
-    // }
+    }
     
     //  export const res = await getForeignData();
     // console.log(res);
@@ -67,8 +69,9 @@ export async function insertDataOnReg(db, username, email, hash){
     })
 }
 
+
+// insert data to the second table
 export async function insertDataToForeignTable(lastid){
-    // insert data to the second table
     sql = `INSERT INTO inventory(weapons, armory, potions, id) VALUES (?,?,?,?)`;
     db.run(sql, ["test", "test2", "test3", lastid[0].id], 
     (err) => {
@@ -97,21 +100,80 @@ export async function getDataFromSecTable(){
 console.log(ress);
 
 
-// query from both tables by id ?
-
-// export async function getBothTables(){
-//     return new Promise(function(resolve,reject){
-//         db.all("SELECT username, armory FROM users INNER JOIN on inventory.id = users.id", function(err,rows){
-//            if(err){return reject(err);}
-//            resolve(rows);
-//          });
+// Update Table Row by id
+export async function updateUserDataById(username, email, password, id){
+    sql = `UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?`;
+    return new Promise(function(resolve,reject){
+        db.run(sql, [username, email, password, id], function(err,rows){
+           if(err){return reject(err);}
+           resolve(rows);
+         });
          
-//     });
+    });
     
-// }
+}
 
-//  export const bothTableData = await getBothTables();
-// console.log(bothTableData);
+
+// Update Second Table Row by id
+export async function updateUserDataByIdTwo(weapons, armory, potions, id){
+    sql = `UPDATE inventory SET weapons = ?, armory = ?, potions = ? WHERE id = ?`;
+    return new Promise(function(resolve,reject){
+        db.run(sql, [weapons, armory, potions, id], function(err,rows){
+           if(err){return reject(err);}
+           resolve(rows);
+         });
+         
+    });
+    
+}
+
+
+
+// // Delete user from Table
+export async function deleteUserFromTable(id){
+    sql = `DELETE FROM users WHERE id = ?`;
+    return new Promise(function(resolve,reject){
+        db.run(sql, [id], function(err,rows){
+           if(err){return reject(err);}
+           resolve(rows);
+         });
+         
+    });
+    
+}
+
+
+
+// return last row id
+export async function getLastIdFromRowTable(username){
+    return new Promise(function(resolve,reject){
+        db.all(`SELECT 
+                    id 
+                FROM 
+                    users 
+                WHERE username = ?`, [username], function(err,rows){
+           if(err){return reject(err);}
+           resolve(rows);
+         });
+         
+    });
+    
+}
+
+
+
+// Create new column in existed table
+export async function addNewColumnToExistedTable(column){
+    sql = `ALTER TABLE users ADD COLUMN = ? INTEGER`;
+        return new Promise(function(resolve, reject){
+            db.run(sql, [column], function(err, rows){
+                if(err){ return reject(err)}
+                resolve(rows);
+            });
+    })
+}
+
+
 
 // Create Table
 // sql = `CREATE TABLE users(id INTEGER PRIMARY KEY, username, email, password)`;
@@ -174,22 +236,6 @@ console.log(ress);
 // if (err) return console.error(err.message);
 // })
 
-
-// return last row id
-export async function getLastIdFromRowTable(username){
-    return new Promise(function(resolve,reject){
-        db.all(`SELECT 
-                    id 
-                FROM 
-                    users 
-                WHERE username = ?`, [username], function(err,rows){
-           if(err){return reject(err);}
-           resolve(rows);
-         });
-         
-    });
-    
-}
 
 
 export default db;

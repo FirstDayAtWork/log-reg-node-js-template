@@ -3,11 +3,9 @@ import { getData } from '../database.js'
 const getIndexPage = async (req, res) => {
     // show db data on ejs page
     const sqlres = await getData();
-    const yourIp = req.socket.remoteAddress
-    console.log(sqlres, yourIp);
+    console.log(sqlres);
     res.render('index', {
-        sqlres: sqlres,
-        yourIp
+        sqlres: sqlres
     })
 }
 
