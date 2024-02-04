@@ -1,0 +1,23 @@
+<%- include('../templates/headstart') %>
+<script defer src="ejsmainpage.js"></script>
+<title>Main Page</title>
+<%- include('../templates/headend') %>
+<body>
+  <div class="e-content">
+    <h1>Hello</h1>
+    <ul>
+        <% sqlres.forEach(function(el) { %>
+          <li>
+            <strong><%= el.id %></strong>
+            <%= el.username %>,
+            <%= el.email %>
+            <%= el.password %>
+          </li>
+        <% }); %>
+      </ul>
+
+      <button type="button" class="btn">Click!</button>
+    </div>
+    <%- include('../templates/noscript') %>
+</body>
+</html>

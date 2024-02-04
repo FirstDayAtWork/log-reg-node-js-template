@@ -7,7 +7,7 @@ const getWelcomePage = (req, res) => {
 
     let msg = `You successfully login!`
     console.log(msg)
-    res.render('welcome', {
+    res.render('pages/welcome', {
         msg,
     })
 }

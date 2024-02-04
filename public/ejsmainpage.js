@@ -6,9 +6,3 @@ someBtn.addEventListener('click', () => {
 })
 
 
-const video = document.getElementsByTagName('video');
-
-document.body.addEventListener('click', () => {
-    video[0].muted = false;
-    console.log('click')
-})
