@@ -1,5 +1,5 @@
 import express from "express";
-import {getIndexPage, getRegisterPage, getLoginPage} from '../controllers/renderPages.js'
+import {getIndexPage, getRegisterPage, getLoginPage, getDisabledJsPage} from '../controllers/renderPages.js'
 import {postRegisterPage} from '../controllers/registerUser.js'
 import {postLoginPage} from '../controllers/loginUser.js'
 
@@ -17,5 +17,7 @@ pageRequests.route('/login')
     .get(getLoginPage)
     .post(postLoginPage)
 
+pageRequests.route('/disabledjs')
+    .get(getDisabledJsPage)
 
 export default pageRequests

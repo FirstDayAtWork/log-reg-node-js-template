@@ -2,26 +2,35 @@
     <script defer src="app-reg.js"></script>
     <title>Register</title>
 <%- include('../templates/headend') %>
+<% if(clientRole === 'user') { %>
+  <%- include('../templates/navbar2') %>
+<% } else if(clientRole === 'admin'){%>
+  <%- include('../templates/navbar2') %>
+<% } else {%>
+  <%- include('../templates/navbar') %>  
+  <% } %>
 <body>
-    
-    <div class="container">
-        <h1>Register</h1>
-    <form action="/register" method="post">
-        <div class="inputs-container">
-            <label for="username">Username</label>
-            <input type="text" class="form-inputs" name="username" id="username">
+    <div class="e-content">
+        <div class="container">
+            <h1>Register</h1>
+            <form action="/register" method="post">
+                <div class="inputs-container">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-inputs" name="username" id="username">
+                
+                    <label for="email">Email</label>
+                    <input type="email" class="form-inputs" name="email" id="email">
+                
+                    <label for="password">Password</label>
+                    <input type="password" class="form-inputs" name="password" id="password">
 
-            <label for="email">Email</label>
-            <input type="email" class="form-inputs" name="email" id="email">
-
-            <label for="password">Password</label>
-            <input type="password" class="form-inputs" name="password" id="password">
-            
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
         </div>
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
-
+    </div>
+    
+<%- include('../templates/footer') %>
 <%- include('../templates/noscript') %>
 </body>
 </html>

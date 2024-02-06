@@ -60,9 +60,9 @@ db.get("PRAGMA foreign_keys = ON", function(err){
 
 
 // insert data on register
-export async function insertDataOnReg(db, username, email, hash){
-    let sql = `INSERT INTO users(username, email, password) VALUES (?,?,?)`;
-    db.run(sql, [username, email, hash], 
+export async function insertDataOnReg(db, username, email, hash, role){
+    let sql = `INSERT INTO users(username, email, password, role) VALUES (?,?,?,?)`;
+    db.run(sql, [username, email, hash, role], 
     (err) => {
     if (err) return console.error(err.message);
 
@@ -163,10 +163,10 @@ export async function getLastIdFromRowTable(username){
 
 
 // Create new column in existed table
-export async function addNewColumnToExistedTable(column){
-    sql = `ALTER TABLE users ADD COLUMN = ? INTEGER`;
+export async function addNewColumnToExistedTable(){
+    sql = `ALTER TABLE users ADD COLUMN role`;
         return new Promise(function(resolve, reject){
-            db.run(sql, [column], function(err, rows){
+            db.run(sql, function(err, rows){
                 if(err){ return reject(err)}
                 resolve(rows);
             });

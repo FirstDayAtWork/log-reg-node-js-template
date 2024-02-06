@@ -27,8 +27,7 @@ formbtn.addEventListener('click', async (e) => {
         console.log(result);
         // get token from headers then send it to the local storage
          // read headers -> datafetch.headers.get('access_token')
-            localStorage.setItem('access_token', datafetch.headers.get('access_token'))
-
+            localStorage.setItem('access_token', datafetch.headers.get('authorization').split(' ')[1])
         // Return -> main page
         window.location.assign('http://127.0.0.1:5000/welcome');
     } else if(datafetch.status === 400){

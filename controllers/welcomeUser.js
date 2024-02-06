@@ -1,14 +1,15 @@
-import jwt from 'jsonwebtoken'
-import cookieParser from 'cookie-parser'
 import 'dotenv/config'
+import jwt from 'jsonwebtoken'
 
 const getWelcomePage = (req, res) => {
-    // let decodedName = jwt.decode(req.cookies['access_token'])
-
-    let msg = `You successfully login!`
+    // req jwt cookie
+    const decodedJwt = jwt.decode(req.cookies['refresh_token'])
+    let msg = `You successfully login as ${decodedJwt?.username}!`
+    const clientRole = req.cookies['u_role'];
     console.log(msg)
     res.render('pages/welcome', {
         msg,
+        clientRole
     })
 }
 

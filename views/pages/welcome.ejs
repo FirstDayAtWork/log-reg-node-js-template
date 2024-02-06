@@ -2,8 +2,18 @@
     <script defer src="app-welcome.js"></script>
     <title>Document</title>
 <%- include('../templates/headend') %>
+<% if(clientRole === 'user') { %>
+  <%- include('../templates/navbar2') %>
+<% } else if(clientRole === 'admin'){%>
+  <%- include('../templates/navbar2') %>
+<% } else {%>
+  <%- include('../templates/navbar') %>  
+  <% } %>
 <body>
-    <h1><%= msg %></h1>
+    <div class="e-content">
+        <h1><%= msg %></h1>
+    </div>
+<%- include('../templates/footer') %>
 <%- include('../templates/noscript') %>
 </body>
 </html>

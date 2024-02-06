@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt'
 import db from '../database.js'
-import { insertDataOnReg } from '../database.js'
-import { getData } from '../database.js'
-import { getLastIdFromRowTable } from '../database.js'
-import { insertDataToForeignTable } from '../database.js'
-import { validationLogic } from '../utils/validation.js'
-import { regExpDelivery } from '../utils/validation.js'
+import { getData, 
+         insertDataOnReg,
+         getLastIdFromRowTable,
+         insertDataToForeignTable 
+        } from '../database.js'
+import { validationLogic, regExpDelivery } from '../utils/validation.js'
 
 const postRegisterPage = async (req, res) => {
     const sqlres = await getData();
@@ -26,8 +26,11 @@ const postRegisterPage = async (req, res) => {
             // hash pass with bcrypt, then send it to db
             const hash = await bcrypt.hash(password, 13);
 
+            // add role 
+            const role = 'user'
+
             // insert data to database!!!
-            const addDataToUsersTable = await insertDataOnReg(db, username, email, hash);
+            const addDataToUsersTable = await insertDataOnReg(db, username, email, hash, role);
             const getLastIdFromTableRow = await getLastIdFromRowTable(username);
             const addDataToTheSecondTable = await insertDataToForeignTable(getLastIdFromTableRow);
         // send a cookie && jwt

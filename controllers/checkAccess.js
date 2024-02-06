@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import cookieParser from 'cookie-parser'
 import 'dotenv/config'
 
 const checkAccessToken = (req, res) => {
@@ -9,6 +8,7 @@ const checkAccessToken = (req, res) => {
     if(!lc_token || lc_token['access_token'] === null){
         res.clearCookie('refresh_token')
         console.log("There is no access token, LOGOUT!")
+        res.cookie('u_role', 'guest', {httpOnly: true})
         res.status(403).json("No access token, LOGOUT!")
         return
     }
@@ -19,21 +19,24 @@ const checkAccessToken = (req, res) => {
             if (err) {
                 // if token is expired ? generate new pair access + refresh
                 console.log("Expired access token")
-                const decodedJwt = jwt.decode(lc_token['access_token'].username)
+                const decodedJwt = jwt.decode(lc_token['access_token'])
+                console.log(decodedJwt.username, "checkaccess")
                 // generate acc jwt token
-                const accessToken = jwt.sign({"username": decodedJwt}, 
+                const accessToken = jwt.sign({"username": decodedJwt.username}, 
                                         process.env.ACCESS_TOKEN_SECRET,
                                         {expiresIn: '30s'})
                 // generate ref jwt token
-                const refreshToken = jwt.sign({"username": decodedJwt}, 
+                const refreshToken = jwt.sign({"username": decodedJwt.username}, 
                                         process.env.REFRESH_TOKEN_SECRET,
                                         {expiresIn: '1d'})
     
-                res.setHeader('access_token', accessToken)
+                res.setHeader('authorization', 'Bearer ' + accessToken)
                 res.cookie('refresh_token', refreshToken, {httpOnly: true})
+                res.cookie('u_role', 'user', {httpOnly: true})
                 res.status(202).json("Send new tokens")
             } else {
                 // send ok if not
+                res.cookie('u_role', 'user', {httpOnly: true})
                 res.status(200).json('OK this is fine')  
             }
             

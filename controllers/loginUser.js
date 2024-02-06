@@ -35,8 +35,9 @@ const postLoginPage = async (req, res) => {
                                 process.env.REFRESH_TOKEN_SECRET,
                                 {expiresIn: '1d'})
     // send cookie w/ access & refresh tokens                           
-    res.setHeader('access_token', accessToken)
+    res.setHeader('authorization', 'Bearer ' + accessToken)
     res.cookie('refresh_token', refreshToken, {httpOnly: true})
+    res.cookie('u_role', 'user', {httpOnly: true})
     res.status(200).json('OK')
     console.log(`Username ${username} is successfully login!`)
 }

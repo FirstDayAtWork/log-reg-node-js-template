@@ -104,9 +104,9 @@ header{
   }
 
 
-  noscript{
+  /* noscript{
     display: none;
-}
+} */
 
 .noscript-container{
     display: flex;

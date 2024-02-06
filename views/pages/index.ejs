@@ -2,6 +2,13 @@
 <script defer src="ejsmainpage.js"></script>
 <title>Main Page</title>
 <%- include('../templates/headend') %>
+<% if(clientRole === 'user') { %>
+  <%- include('../templates/navbar2') %>
+<% } else if(clientRole === 'admin'){%>
+  <%- include('../templates/navbar2') %>
+<% } else {%>
+  <%- include('../templates/navbar') %>  
+  <% } %>
 <body>
   <div class="e-content">
     <h1>Hello</h1>
@@ -18,6 +25,7 @@
 
       <button type="button" class="btn">Click!</button>
     </div>
+    <%- include('../templates/footer') %>
     <%- include('../templates/noscript') %>
 </body>
 </html>

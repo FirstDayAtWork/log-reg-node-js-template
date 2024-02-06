@@ -1,0 +1,28 @@
+<%- include('../templates/headstart') %>
+<script defer src="disabledjs.js"></script>
+<%- include('../templates/headend') %>
+<body>
+    <div class="e-content">
+    <div class="container">
+        <button type="button" class="btn" id="back-btn">Get Back</button>
+    </div>
+</div>
+    <noscript>
+        <style>
+        .e-content{
+          display: none;
+        }
+    
+        noscript{
+          display: block;
+        }
+    </style>
+    <div class="noscript-container">
+        <h1>Oooooh!!! I see wachu done right here....</h1>
+        <h2>Please enable Javascript</h2>
+      <video width="560" height="315" controls autoplay loop muted>
+        <source src="/video" type="video/mp4">
+      </video>
+      </div>
+    </noscript>
+</body>

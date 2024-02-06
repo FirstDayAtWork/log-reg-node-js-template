@@ -1,5 +1,4 @@
 import express from 'express'
-import { check, validationResult} from 'express-validator'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import 'dotenv/config'

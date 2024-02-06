@@ -81,8 +81,8 @@ formbtn.addEventListener('click', async (e) => {
 
         if(datafetch.status === 200) {
                 console.log('OK')
-                // Return -> main page
-        window.location.assign('http://127.0.0.1:5000/');
+                // Retdirect -> login page
+        window.location.assign('http://127.0.0.1:5000/login');
         } else if(datafetch.status === 400){
             
             let user_err = document.createElement('small');
