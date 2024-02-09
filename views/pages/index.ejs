@@ -3,28 +3,34 @@
 <title>Main Page</title>
 <%- include('../templates/headend') %>
 <% if(clientRole === 'user') { %>
-  <%- include('../templates/navbar2') %>
+  <% if(!userName){ %>
+    <%- include('../templates/navbar') %>
+   <% } else { %>
+    <%- include('../templates/navbar2', userName) %>
+    <% } %>
 <% } else if(clientRole === 'admin'){%>
-  <%- include('../templates/navbar2') %>
+  <%- include('../templates/navbar3') %>
 <% } else {%>
   <%- include('../templates/navbar') %>  
   <% } %>
 <body>
   <div class="e-content">
-    <h1>Hello</h1>
-    <ul>
-        <% sqlres.forEach(function(el) { %>
-          <li>
-            <strong><%= el.id %></strong>
-            <%= el.username %>,
-            <%= el.email %>
-            <%= el.password %>
-          </li>
-        <% }); %>
-      </ul>
+    <div class="container">
+      <h1>Hello</h1>
+        <ul>
+            <% sqlres.forEach(function(el) { %>
+              <li>
+                <strong><%= el.id %></strong>
+                <%= el.username %>,
+                <%= el.email %>
+                <%= el.password %>
+              </li>
+            <% }); %>
+        </ul>
 
       <button type="button" class="btn">Click!</button>
     </div>
+  </div>
     <%- include('../templates/footer') %>
     <%- include('../templates/noscript') %>
 </body>

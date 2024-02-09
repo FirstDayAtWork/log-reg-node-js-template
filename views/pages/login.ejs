@@ -3,9 +3,13 @@
     <title>Login Page</title>
 <%- include('../templates/headend') %>
 <% if(clientRole === 'user') { %>
-  <%- include('../templates/navbar2') %>
+  <% if(!userName){ %>
+    <%- include('../templates/navbar') %>
+   <% } else { %>
+    <%- include('../templates/navbar2', userName) %>
+    <% } %>
 <% } else if(clientRole === 'admin'){%>
-  <%- include('../templates/navbar2') %>
+  <%- include('../templates/navbar3') %>
 <% } else {%>
   <%- include('../templates/navbar') %>  
   <% } %>

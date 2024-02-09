@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 import pageRequests from './routes/pageRequests.js'
 import streamVideo from './routes/streamVideo.js'
 import authPages from './routes/authPages.js'
+import logout from './routes/logout.js'
 import crypto from 'crypto'
 
 const app = express()
@@ -33,6 +34,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(pageRequests)
 app.use(streamVideo)
 app.use(authPages)
+app.use(logout)
 // const generateToken = async (c) => {
 //     const hex = await c.randomBytes(64).toString('hex');
 //     console.log(hex)

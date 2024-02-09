@@ -8,8 +8,30 @@
             </div>
         </div>
         <div class="navbar-reg">
-            <a class="navbar-link-style" href="/login">Username</a>
-            <a class="navbar-link-style" href="/register">Log Out</a>
+
+            <div class="dropdown">
+                <div class="title-plus-arrow">
+                    <a class="navbar-link-style n-right" href="#"><%= userName %></a>
+                    <div class="dropdown-arrow"></div>
+                 </div>
+            <div class="dropdown-content">
+                <div class="content-link">
+                    <a class="drop-sub-elem" href="/profile" >Profile</a>
+                </div>
+                <div class="content-link">
+                    <a class="drop-sub-elem" href="/downloads" >Downloads</a>
+                </div>
+                <div class="content-link">
+                    <a class="drop-sub-elem" href="/settings">Settings</a>
+                </div>
+                <div class="content-link">
+                    <a class="drop-sub-elem" href="/logout">Log Out</a>
+                </div>
+
+              </div>
+            </div>
+
+        
         </div>
     </div>
 </header>

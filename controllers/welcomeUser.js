@@ -4,10 +4,12 @@ import jwt from 'jsonwebtoken'
 const getWelcomePage = (req, res) => {
     // req jwt cookie
     const decodedJwt = jwt.decode(req.cookies['refresh_token'])
-    let msg = `You successfully login as ${decodedJwt?.username}!`
+    let userName = decodedJwt?.username;
+    let msg = `You successfully login as ${userName}!`
     const clientRole = req.cookies['u_role'];
     console.log(msg)
     res.render('pages/welcome', {
+        userName,
         msg,
         clientRole
     })

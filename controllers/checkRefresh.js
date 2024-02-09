@@ -14,6 +14,7 @@ const checkRefreshToken = (req, res, next) => {
     // verify refresh token
     jwt.verify(refTokenfromCookie, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
         if (err) {
+            res.clearCookie('refresh_token')
             res.cookie('u_role', 'guest', {httpOnly: true})
             res.status(403).json("Expired refresh token, LOGOUT!")
             return
