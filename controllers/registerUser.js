@@ -32,6 +32,7 @@ const postRegisterPage = async (req, res) => {
             // insert data to database!!!
             const addDataToUsersTable = await insertDataOnReg(db, username, email, hash, role);
             const getLastIdFromTableRow = await getLastIdFromRowTable(username);
+            console.log(getLastIdFromTableRow)
             const addDataToTheSecondTable = await insertDataToForeignTable(getLastIdFromTableRow);
         // send a cookie && jwt
         let loginresult = 'Success!';

@@ -176,7 +176,7 @@ export async function addNewColumnToExistedTable(){
 
 
 // Create Table
-// sql = `CREATE TABLE users(id INTEGER PRIMARY KEY, username, email, password)`;
+// sql = `CREATE TABLE users(id INTEGER PRIMARY KEY, username, email, password, role)`;
 // db.run(sql);
 
 
@@ -210,7 +210,7 @@ export async function addNewColumnToExistedTable(){
 
 
 // Drop table
-// db.run("DROP TABLE inventory");
+// db.run("DROP TABLE users");
 
 
 // update data
