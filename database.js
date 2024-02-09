@@ -30,8 +30,8 @@ db.get("PRAGMA foreign_keys = ON", function(err){
         
     }
     
-    //  export const result = await getData();
-    // console.log(result);
+     export const result = await getData();
+    console.log(result);
 
 // query from foreign table
     export async function getForeignData(){
@@ -96,8 +96,8 @@ export async function getDataFromSecTable(){
     
 }
 
-//  export const ress = await getDataFromSecTable();
-// console.log(ress);
+ export const ress = await getDataFromSecTable();
+console.log(ress);
 
 
 // Update Table Row by id
