@@ -21,10 +21,7 @@ formbtn.addEventListener('click', async (e) => {
      
     let result = await datafetch.json();
 
-    
-
-    if(datafetch.status === 200){
-        console.log(result);
+    if(datafetch.ok){
         // get token from headers then send it to the local storage
          // read headers -> datafetch.headers.get('access_token')
             localStorage.setItem('access_token', datafetch.headers.get('authorization').split(' ')[1])
