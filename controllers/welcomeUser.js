@@ -8,7 +8,7 @@ const getWelcomePage = (req, res) => {
     let msg = `You successfully login as ${userName}!`
     const clientRole = req.cookies['u_role'];
     console.log(msg)
-    res.render('pages/welcome', {
+    res.render('pages/u/welcome', {
         userName,
         msg,
         clientRole

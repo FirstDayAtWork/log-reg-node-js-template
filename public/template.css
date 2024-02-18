@@ -11,11 +11,13 @@
 body {
     font-family: var(--font-f);
     margin: 0;
+    padding: 0;
 }
 
 
 .e-content{
     display: block;
+    padding: 0 1.5rem;
 }
 
 
@@ -304,7 +306,7 @@ ul li{
 }
 
 
-@media only screen and (min-width: 701px)  {
+@media only screen and (min-width: 769px)  {
     .burger-container {
         display: none;
     }

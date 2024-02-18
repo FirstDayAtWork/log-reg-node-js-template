@@ -39,9 +39,10 @@ const postLoginPage = async (req, res) => {
     res.cookie('refresh_token', refreshToken, {
         httpOnly: true,
         secure: true,
-        maxAge: 86400e3
+        maxAge: 86400e3,
+        sameSite: 'lax'
         })
-    res.cookie('u_role', 'user', {httpOnly: true, secure: true})
+    res.cookie('u_role', 'user', {httpOnly: true, secure: true, sameSite: 'lax'})
     res.status(200).json('OK')
     console.log(`Username ${username} is successfully login!`)
 }

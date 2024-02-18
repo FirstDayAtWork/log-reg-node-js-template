@@ -19,7 +19,9 @@ burgerButton?.addEventListener('click', () => {
             el.style.display = 'flex'
         })
     }
+    
 })
+
 
 dropdownMenu?.addEventListener('click', () => {
     if(dropDownContent.style.display === 'block'){
@@ -28,6 +30,7 @@ dropdownMenu?.addEventListener('click', () => {
                 || dropDownContent.style.display === ''){
         dropDownContent.style.display = 'block'
     }
+
 })
 
 
@@ -39,6 +42,8 @@ dropdownMenu?.addEventListener('click', () => {
 // dropdownMenu?.addEventListener('mouseout', () => {
 //     dropDownContent.style.display = 'none'
 // })
+
+
 // burgerButton.addEventListener('blur', () => {
 //     navBarContent.style.display = 'none'
 // })

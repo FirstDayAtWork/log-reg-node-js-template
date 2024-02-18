@@ -21,7 +21,7 @@ async function getTokens(){
         } else if(datafetch.status === 403){
             localStorage.removeItem('access_token');
             console.log('there is no access or refresh token')
-            return window.location.assign('http://127.0.0.1:5000/login');
+            return window.location.assign('http://localhost:5000/login');
         }
     } catch (error) {
         console.error(error)

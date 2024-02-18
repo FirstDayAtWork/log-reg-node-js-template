@@ -20,7 +20,8 @@ export const setRoleCookie = (req, res) => {
             console.log('u have no role!')
             res.cookie('u_role', 'guest', {
                 httpOnly: true,
-                secure: true
+                secure: true,
+                sameSite: 'lax'
             })
             break;
     }

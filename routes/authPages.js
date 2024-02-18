@@ -9,7 +9,7 @@ const authPages = express.Router();
 
 
 
-authPages.route(`/welcome`)
+authPages.route('/welcome')
     .get(getWelcomePage)
     .post(checkRefreshToken, checkAccessToken)
 
