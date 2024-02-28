@@ -75,42 +75,34 @@ formbtn.addEventListener('click', async (e) => {
     
         let result = await datafetch.json();
 
-            
-
-            
-
         if(datafetch.status === 200) {
-                console.log('OK')
-                // Retdirect -> login page
-        window.location.assign('http://localhost:5000/login');
+            console.log('OK')
+            // Retdirect -> login page
+            window.location.assign('http://localhost:5000/login');
         } else if(datafetch.status === 400){
-            
             let user_err = document.createElement('small');
-                    user_err.classList.add('user-err');
-                    user_err.innerText = `Username ${userNameInput.value} is already exist`;
-                    userNameInput.style.border = '2px solid #b90909'
-                    // remove err if already exist
-                    if(userNameInput.nextElementSibling.classList.contains('user-err')){
-                        userNameInput.nextElementSibling.remove();
-                    }
-
-                    userNameInput.after(user_err);
-                    setTimeout(() => {
-                        user_err.remove();
-                        userNameInput.style.border = '2px solid #dddddd';
-                        userNameInput.addEventListener('focus', () => userNameInput.style.border = '2px solid #0941b9');
-                        userNameInput.addEventListener('blur', () => userNameInput.style.border = '2px solid #dddddd')
-                    }, 5000);
+                user_err.classList.add('user-err');
+                user_err.innerText = `Username ${userNameInput.value} is already exist`;
+                userNameInput.style.border = '2px solid #b90909'
+                // remove err if already exist
+                if(userNameInput.nextElementSibling.classList.contains('user-err')){
+                    userNameInput.nextElementSibling.remove();
+                }
+                userNameInput.after(user_err);
+                setTimeout(() => {
+                    user_err.remove();
+                    userNameInput.style.border = '2px solid #dddddd';
+                    userNameInput.addEventListener('focus', () => userNameInput.style.border = '2px solid #0941b9');
+                    userNameInput.addEventListener('blur', () => userNameInput.style.border = '2px solid #dddddd')
+                }, 5000);
             console.log('Username is already exist')
-        }
-        
       } else {
         console.log('else');
         
         return
       }
 
-        
+    }  
         // prevalidation logic
         function preValidation(inputsData, REGEXP){
             let arr = [];

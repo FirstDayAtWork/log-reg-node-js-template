@@ -6,6 +6,7 @@ const addVideoPath = async (req, res) => {
     const range = await req.headers.range;
     if (!range) {
         res.status(400).send("Requires Range header");
+        return
     }
     const videoPath = "content/Rick Astley - Never Gonna Give You Up (Official Music Video).mp4";
     const videoSize = fs.statSync(videoPath).size;

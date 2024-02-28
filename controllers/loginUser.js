@@ -14,14 +14,14 @@ const postLoginPage = async (req, res) => {
     // return if !user
     if (!user){
         console.log('User doesn\'t exist!')
-        res.status(400).json('User doesn\'t exist!')
+        res.status(401).json('Invalid username or password.')
         return
     }
     // Compare pass with hash pass
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid){
         console.log('Wrong Password')
-        res.status(402).json('Wrong Password')
+        res.status(401).json('Invalid username or password.')
         return
     }
     // Send a cookie && jwt

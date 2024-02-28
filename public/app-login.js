@@ -1,7 +1,24 @@
+"use strict"
 const formbtn = document.querySelector('.btn');
-// const inputs = document.querySelectorAll('.form-inputs');
-
+const formInputs = document.querySelectorAll('.form-inputs');
 const formValues = document.querySelector('form');
+
+function keyDownEvents(){
+    formbtn.disabled = true;
+    for(let elem of formInputs){
+        elem.addEventListener('input', () => {
+            if(elem.value.length < 1){
+                formbtn.disabled = true
+                return
+            } 
+                formbtn.disabled = false
+        })
+        
+    }
+ 
+}
+
+keyDownEvents()
 
 formbtn.addEventListener('click', async (e) => {
     try {
@@ -28,21 +45,26 @@ formbtn.addEventListener('click', async (e) => {
         // Return -> main page
             window.location.assign('http://localhost:5000/welcome');
 
-    } else if(datafetch.status === 400){
-        console.log(result)
-    } else if(datafetch.status === 402){
+    } else if(datafetch.status === 401){
+        const inputsContainer = document.querySelector('.inputs-container');
+            let user_err = document.createElement('small');
+                user_err.classList.add('big-user-err');
+                user_err.innerText = `Invalid username or password.`;
+                // remove err if already exist
+                if(inputsContainer.firstChild.classList?.contains('big-user-err')){
+                    inputsContainer.firstChild.remove();
+                }
+                inputsContainer.prepend(user_err);
+
+                setTimeout(() => {
+                    user_err.remove();
+                }, 5000);
+
         console.log(result)
     }
 
     } catch (error) {
         console.log(error, 'aaah')
     }
-    
 
-
-
-    
-    
-
-    
 })
