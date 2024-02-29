@@ -36,8 +36,9 @@ header{
     padding: 0 1.5rem;
     height: 61px;
     background-color: var(--main-font-color);
-    border-bottom: 1px solid var(--nav-border-color);
+    /* border-bottom: 1px solid var(--nav-border-color); */
     width: inherit;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
 }
 
 .burger-container{
@@ -177,7 +178,6 @@ ul li{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
     border-top: 1px solid var(--nav-border-color);
   }
 
@@ -214,7 +214,7 @@ ul li{
     justify-content: center;
 }
 
-@media only screen and (max-width: 700px)  {
+@media only screen and (max-width: 768px)  {
     .burger-container {
         display: flex;
         justify-content: right;
@@ -231,9 +231,17 @@ ul li{
         left: 30px;
         width: 92%;
         z-index: 3;
-        border-bottom: 1px solid #d6d6d6;
-        border-left: 1px solid #d6d6d6;
+        /* border-bottom: 1px solid #d6d6d6;
+        border-left: 1px solid #d6d6d6; */
         border-radius: 3px;
+        box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.08),
+        0px 4px 13px rgba(0, 0, 0, .05);
+    }
+
+    .navbar-content:hover{
+        box-shadow: 0px 10px 13px rgba(0, 0, 0, 0.08),
+        0px 10px 13px rgba(0, 0, 0, .1),
+        0px 4px 13px rgba(0, 0, 0, .05);
     }
     
     .navbar-left-side, .navbar-reg{
